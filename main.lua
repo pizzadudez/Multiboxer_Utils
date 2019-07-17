@@ -40,8 +40,8 @@ function Utils:LOOT_READY()
     lootCount = GetNumLootItems()
     
     if lootCount > 0 then
-        self:ScheduleTimer('LOOT_READY', 0.5)
+        self:ScheduleTimer('LOOT_READY', 0.3)
     else
-        CloseLoot()
+        self:ScheduleTimer(function() CloseLoot() end, 0.1)
     end
 end
